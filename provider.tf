@@ -8,13 +8,11 @@ terraform {
 }
 
 variable "do_token" {}
+variable "pvt_key" {}
 
 provider "digitalocean" {
   token = var.do_token
 }
-resource "digitalocean_droplet" "web" {
-  image  = "ubuntu-20-04-x64"
-  name   = "development"
-  region = "fra1"
-  size   = "s-1vcpu-1gb"
+data "digitalocean_ssh_key" "terraform" {
+  name = "terraform"
 }
