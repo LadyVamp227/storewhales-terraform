@@ -1,0 +1,9 @@
+- become: yes
+  hosts: all ansible_user=gabriela
+  name: nginx-install
+  tasks:
+    - name: Install nginx
+      apt:
+        name: nginx
+        update_cache: yes
+        state: latest
